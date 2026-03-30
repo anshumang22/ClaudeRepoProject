@@ -1,0 +1,233 @@
+<style>
+    body {
+        font-family: "Arial", sans-serif;
+        margin: 20px;
+        font-size: 10pt;
+        /* Adjusted for better fit to the image */
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .header-left p,
+    .header-right p {
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .section-title {
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 11pt;
+        /* Adjusted */
+    }
+
+    .field {
+        display: flex;
+        margin-bottom: 2px;
+    }
+
+    .field-label {
+        width: 300px;
+        /* Adjusted width to align values */
+        flex-shrink: 0;
+    }
+
+    .field-value {
+        flex-grow: 1;
+    }
+
+    .indent {
+        margin-left: px;
+    }
+
+    .line-break {
+        margin-top: 15px;
+        border-bottom: 1px solid #ccc;
+        /* For visual separation if needed */
+    }
+</style>
+
+<body>
+    <p>This is a list of the answers you gave when applying for Kentucky unemployment insurance benefits. Keep a copy of
+        this document for your personal records.</p>
+    <div class="section-title">Initial Questions:</div>
+    <div class="field"> <span class="field-label">Have you worked for any employer since separating from @Model.MRSE on
+            @Model.LDW?</span> <span class="field-value">@Model.IsWorkedMRSE</span> </div>
+    <div class="section-title">Contact Information:</div>
+    <div class="field indent"> <span class="field-label">First Name:</span> <span
+            class="field-value">@Model.ClaimantFirstName</span> </div>
+    <div class="field indent"> <span class="field-label">Middle Initial:</span> <span
+            class="field-value">@Model.ClaimantMiddleName</span> </div>
+    <div class="field indent"> <span class="field-label">Last Name:</span> <span
+            class="field-value">@Model.ClaimantLastName</span> </div>
+    <div class="field indent"> <span class="field-label"><b>Physical Address</b></span> <span class="field-value"></span>
+    </div>
+    <div class="field indent"> <span class="field-label">Address Line 1:</span> <span
+            class="field-value">@Model.PhysicalAdd.Addr1</span> </div>
+    <div class="field indent"> <span class="field-label">Address Line 2:</span> <span
+            class="field-value">@Model.PhysicalAdd.Addr2</span> </div>
+    <div class="field indent"> <span class="field-label">City:</span> <span
+            class="field-value">@Model.PhysicalAdd.City</span> </div>
+    <div class="field indent"> <span class="field-label">County:</span> <span
+            class="field-value">@Model.PhysicalAdd.CountyCD</span> </div>
+    <div class="field indent"> <span class="field-label">State:</span> <span class="field-value">
+            @Model.PhysicalAdd.StateCD</span> </div>
+    <div class="field indent"> <span class="field-label">Zip Code:</span> <span
+            class="field-value">@Model.PhysicalAdd.Zip</span> </div>
+    <div class="field indent"> <span class="field-label">Country:</span> <span
+            class="field-value">@Model.PhysicalAdd.CountryCD</span> </div>
+    <div class="field indent"> <span class="field-label"><b>Mailing Address</b></span> <span class="field-value"></span> </div>
+    <div class="field indent"> <span class="field-label">Address Line 1:</span> <span
+            class="field-value">@Model.MailingAdd.Addr1</span> </div>
+    <div class="field indent"> <span class="field-label">Address Line 2:</span> <span
+            class="field-value">@Model.MailingAdd.Addr2</span> </div>
+    <div class="field indent"> <span class="field-label">City:</span> <span
+            class="field-value">@Model.MailingAdd.City</span> </div>
+    <div class="field indent"> <span class="field-label">County:</span> <span
+            class="field-value">@Model.MailingAdd.CountyCD</span> </div>
+    <div class="field indent"> <span class="field-label">State:</span> <span
+            class="field-value">@Model.MailingAdd.StateCD</span> </div>
+    <div class="field indent"> <span class="field-label">Zip Code:</span> <span
+            class="field-value">@Model.MailingAdd.Zip</span> </div>
+    <div class="field indent"> <span class="field-label">Country:</span> <span
+            class="field-value">@Model.MailingAdd.CountryCD</span> </div>
+    <div class="field indent"> <span class="field-label">Are you willing to travel to Kentucky for work?</span> <span
+            class="field-value">@Model.WillingtoTravelKY</span> </div>
+    <div class="field indent"> <span class="field-label">Is your mailing address the same as your physical
+            address?</span> <span class="field-value">@Model.IsMailingSameAsPhysicalAdd</span> </div>
+    <div class="field indent"> <span class="field-label"><b>Telephone Numbers</b></span> <span class="field-value"></span>
+    </div>
+    <div class="field indent"> <span class="field-label">Home:</span> <span class="field-value">@Model.HomePh</span>
+    </div>
+    <div class="field indent"> <span class="field-label">Mobile:</span> <span class="field-value">@Model.CellNo</span>
+    </div>
+    <div class="section-title">Correspondence Preference:</div>
+    <div class="field"> <span class="field-label">How would you like to receive your correspondence:</span> <span
+            class="field-value"></span> </div>
+    <div class="field indent"> <span class="field-label">Email Address:</span> <span
+            class="field-value">@Model.CorrespondenceDetail.Email</span> </div>
+    <div class="field indent"> <span class="field-label">Re-enter e-mail address:</span> <span
+            class="field-value">@Model.CorrespondenceDetail.Email</span> </div>
+    <div class="field indent"> <span class="field-label">Select your preferred language:</span> <span
+            class="field-value">@Model.CorrespondenceDetail.Language</span> </div>
+    
+    <div class="section-title">Payment Options:</div>
+    <div class="field"> <span class="field-label">Tax withholding preference:</span> <span class="field-value">@Model.TaxWHPref</span>
+    </div>
+    <div class="field"> <span class="field-label">I would like my benefits paid by:</span>@Model.BenefitsPaidBy<span
+            class="field-value"></span> </div>
+    <div class="section-title">Kentucky Employment Information</div>
+    <!-- <div class="field"> <span class="field-label">Department records show you worked for:</span> <span class="field-value"></span> </div> -->
+    <div class="field indent"> <span class="field-label">Employer Name:</span> <span
+            class="field-value">@Model.EmployerName</span> </div>
+    <div class="field indent"> <span class="field-label">KY Employer Legal Name:</span> <span
+            class="field-value">@Model.EmployerLegalName</span> </div>
+    <div class="field indent"> <span class="field-label">KY Employer Doing Business as (DBA) Name:</span> <span
+            class="field-value">@Model.EmployerDBAName</span> </div>
+    <div class="field indent"> <span class="field-label">Did you work for this employer?</span> <span
+            class="field-value">@Model.WorkForEmployer</span> </div>
+    <div class="field indent"> <span class="field-label">Primary Occupation:</span> <span
+            class="field-value">@Model.PrimaryOccupation</span> </div>
+    <div class="field indent"> <span class="field-label">When did you start working for this employer?</span> <span
+            class="field-value">@Model.EmployerStartDate</span> </div>
+    <div class="field indent"> <span class="field-label">When did you last perform work for this employer?</span> <span
+            class="field-value">@Model.EmployerEndDate</span> </div>
+    <div class="field indent"> <span class="field-label">Have you worked for this employer in 10 or more separate week
+            since @Model.BasePeriodBeginDate? Note: The 10 weeks did not have to be in a row and you did not have to
+            work the entire week for it to be counted as a week?</span> <span
+            class="field-value">@Model.HaveWorkwithEmployer10Week</span> </div>
+    <div class="field indent"> <span class="field-label">How many hours do you typically work during a week?</span>
+        <span class="field-value">@Model.NoOfHoursperWeek</span> </div>
+    <div class="field indent"> <span class="field-label">In what county did you perform your work?</span> <span
+            class="field-value">@Model.WorkCounty</span> </div>
+    <div class="field indent"> <span class="field-label">Did your employer give you a definite return to work
+            date?</span> <span class="field-value">@Model.IsReturnWorkDate</span> </div>
+    <div class="field indent"> <span class="field-label">Return to work date</span> <span
+            class="field-value">@Model.ReturnWorkDate</span> </div>
+    <div class="field indent"> <span class="field-label">Rate of Pay:</span> <span
+            class="field-value">@Model.RatePay</span> </div>
+    <div class="field indent"> <span class="field-label">Pay Unit:</span> <span
+            class="field-value">@Model.PayUnit</span> </div>
+    <div class="field indent"> <span class="field-label">Have you received (or will you receive) payments from a pension
+            or retirement fund that this employer contributed to?</span> <span
+            class="field-value">@Model.IsReceivePensionRetirementFund</span> </div>
+    <div class="field indent"> <span class="field-label">Payment Method</span> <span
+            class="field-value">@Model.PaymentMethod</span> </div>
+    <div class="field indent"> <span class="field-label">Did this employer provide you (or will they provide you) with
+            any job separation pay OTHER than your last paycheck (i.e., holiday pay, vacation pay, wages paid to
+            compensate you for lack of notice, severance, WARN, etc.)?</span> <span
+            class="field-value">@Model.IsEmployerJobSepPay</span> </div>
+    <div class="field indent"> <span class="field-label">Reason for separation from this employer?</span> <span
+            class="field-value">@Model.ReasonForSeperation</span> </div>
+    <div class="field indent"> <span class="field-label">Reason for separation from this employer?</span> <span
+            class="field-value">@Model.ReasonForSeperation</span> </div>
+    <!-- TODO::This Section may go into Loop for Empoyer Collection -->
+    <div class="field indent"> <span class="field-label">1.Non- KY Employer Legal Name:</span> <span
+            class="field-value">@Model.NonKYEmployerLegalName</span> </div>
+    <div class="field indent"> <span class="field-label">Non- KY Employer Doing Business as (DBA) Name:</span> <span
+            class="field-value">@Model.NonKYEmployerDBAName</span> </div>
+    <div class="field indent"> <span class="field-label">Employer Business Address:</span> <span
+            class="field-value">@Model.NonKYEmployerAddress</span> </div>
+    <div class="field indent"> <span class="field-label">State</span> <span
+            class="field-value">@Model.NonKYEmployerState</span> </div> <!-- TODO::END This Section -->
+    <div class="section-title">Military Service Information</div>
+    <div class="field indent"> <span class="field-label">Branch of Military Service:</span> <span
+            class="field-value">@Model.BranchMilitaryService</span> </div>
+    <div class="field indent"> <span class="field-label">Have you filed for unemployment benefits in any other state
+            since your most recent separation from active-duty military service?</span> <span
+            class="field-value">@Model.IsFiledOtherStateUnemploymentBenefit</span> </div>
+    <div class="field indent"> <span class="field-label">Do you have a copy of your DD214, Member 4?</span> <span
+            class="field-value">@Model.IsDD214Copy</span> </div>
+    <div class="field indent"> <span class="field-label">Most recent Military service entry date</span> <span
+            class="field-value">@Model.MilitaryServiceEntryDate</span> </div>
+    <div class="field indent"> <span class="field-label">Date of discharge:</span> <span
+            class="field-value">@Model.DischargeDate</span> </div>
+    <div class="field indent"> <span class="field-label">Reason or character of your separation </span> <span
+            class="field-value">@Model.ReasonMilitarySeparation</span> </div>
+    <div class="field indent"> <span class="field-label">Paygrade at the time of separation</span> <span
+            class="field-value">@Model.Paygrade</span> </div>
+    <div class="field indent"> <span class="field-label">Do you receive (or will you apply to receive) retirement
+            benefits from the military?</span> <span
+            class="field-value">@Model.IsReceiveRetirementBenefitMilitary</span> </div>
+    <div class="field indent"> <span class="field-label">Completed first full term of service?</span> <span
+            class="field-value">@Model.IsCompletedFullTerm</span> </div>
+    <div class="field indent"> <span class="field-label">Have you completed 180 days of continuous active duty?</span>
+        <span class="field-value">@Model.IsCompleted180daysActiveDuty</span> </div>
+    <div class="field indent"> <span class="field-label">Number of days accrued leave</span> <span
+            class="field-value">@Model.NumDaysAccruedLeave</span> </div>
+    <div class="field indent"> <span class="field-label">Ending date of most recent accrued leave period</span> <span
+            class="field-value">@Model.EndDateAccruedLeave</span> </div>
+    <div class="field indent"> <span class="field-label">Separation pay from the military</span> <span
+            class="field-value">@Model.SeparationPayMilitary</span> </div>
+    <div class="field indent"> <span class="field-label">Are you receiving disability pay from the military?</span>
+        <span class="field-value">@Model.DisabilityPayMilitary</span> </div>
+    <div class="field indent"> <span class="field-label">Are you receiving Veterans Affairs disability pension?</span>
+        <span class="field-value">@Model.IsReceiveDisabilityPension</span> </div>
+    <div class="section-title">Federal Civilian Employment Information</div>
+    <div class="field indent"> <span class="field-label">Department/Agency:</span> <span
+            class="field-value">@Model.FedDepartment</span> </div>
+    <div class="field indent"> <span class="field-label">Option that best describes your position.</span> <span
+            class="field-value">@Model.FedOptionPosition</span> </div>
+    <div class="field indent"> <span class="field-label">State in which you last worked</span> <span
+            class="field-value">@Model.FedStateWorked</span> </div>
+    <div class="field indent"> <span class="field-label">City:</span> <span class="field-value">@Model.FedCity</span>
+    </div>
+    <div class="field indent"> <span class="field-label">Have you filed for unemployment benefits in any state since
+            your most recent separation from the federal government?</span> <span
+            class="field-value">@Model.IsFiledFedStateUnemploymentBenefit</span> </div>
+    <div class="field indent"> <span class="field-label">Do you have Standard Form 8 (SF-8) from your Federal
+            Employer?</span> <span class="field-value">@Model.IsForm8</span> </div>
+    <div class="field indent"> <span class="field-label">Do you have Standard Form 50 (SF-50) from your Federal
+            Employer?</span> <span class="field-value">@Model.IsForm50</span> </div>
+    <div class="field indent"> <span class="field-label">Expect to receive any payments from
+            @Model.FedDepartment?</span> <span class="field-value">@Model.IsReceiveFedPayment</span> </div>
+    <div class="field indent"> <span class="field-label">Are you receiving retirement benefits from [Department
+            name]?</span> <span class="field-value">@Model.IsReceiveFedRetirementBenefit</span> </div>
+    <div class="field indent"> <span class="field-label">Did you last work for @Model.FedDepartment in the state of
+            @Model.FedStateWorked</span> <span class="field-value">@Model.IsFedLastWorked</span> </div>
+</body>

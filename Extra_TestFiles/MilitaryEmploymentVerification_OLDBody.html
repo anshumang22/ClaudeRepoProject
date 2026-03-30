@@ -1,0 +1,25 @@
+<body>
+    <table style="width: 90% ">
+        <tr>
+            <td align="">Claimant ID: <label ID="ClaimantID" FieldName="ClaimantID"
+                    type="None">@Model.CorrespondenceDetail.ClaimantID</label></td>
+        </tr>
+        </tbody>
+    </table>
+    <p> When you filed your unemployment claim you indicated that you had military employment. To enable the AGENCY SHORT NAME to
+        obtain the necessary wage and separation information from your military employment, you must mail a clear and
+        readable photocopy of your DD 214 Service/Member 2, 4 or 6, to the following address: </p> <br />
+    <center> 
+        STATE OF @Model.StateLongName
+        <br>
+        @Model.StateLongName
+        @Model.DepartmentName
+        <br>
+        PO BOX @Model.StateAddress.PoBox
+        <br>
+        @Model.StateAddress.City,
+        @Model.StateAddress.Zip
+    </center>
+    <p> If you have questions about this letter, please call us at 1-866-500-0017. </p>
+</body>
+

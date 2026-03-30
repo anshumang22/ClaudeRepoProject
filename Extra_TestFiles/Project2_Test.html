@@ -1,0 +1,61 @@
+<body style="font-size:12pt; font-family:Arial">
+    <h1 style="text-align:center; font-family:Arial; font-size:12pt; font-weight:bold; margin-top:1em">Combined Wage
+        Claim Choice Letter</h1> <br />
+    <p>A Combined Wage Claim has been filed in @Model.StateName. We have been notified that you may have eligibility in another
+        state.</p>
+    <p>Under the Federal Interstate Combined Wage Agreement, you may choose to combine your wages from these states in
+        order to qualify for unemployment benefits under the law of one state. You may also choose to file for benefits
+        in just one of the states where you performed work.</p>
+    <p>Unemployment law varies between states, and your eligibility and benefit amount will be determined by the law of
+        the state where you file. The tables below show what your weekly benefit amount and maximum benefit amount would
+        be in each separate state, as well as those of your combined benefit. Read these tables carefully to choose how
+        you want to file.</p>
+    <p>Individual State Benefit Amounts:
+    <table border="1" style="width:100%; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="text-align:left;">State</th>
+                <th style="text-align:left;">WBA</th>
+                <th style="text-align:left;">MBA</th>
+            </tr>
+        </thead>
+        <tbody> @foreach (var val in @Model.wbaInfo) { <tr>
+                <td>@val.StateCd</td>
+                <td>$ @val.WbaAm.ToString("N2")</td>
+                <td>$ @val.MbaAm.ToString("N2")</td>
+            </tr> } </tbody>
+    </table>
+    </p> <br />
+    <p>@Model.StateName Combined Wage Claim Benefit Amount:
+    <table border="1" style="width:100%; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="text-align:left;">State</th>
+                <th style="text-align:left;">WBA</th>
+                <th style="text-align:left;">MBA</th>
+            </tr>
+        </thead>
+        <tbody> @foreach (var item in @Model.combinedWbaInfo) { <tr>
+                <td>@item.StateCd</td>
+                <td>$ @item.WbaAm.ToString("N2")</td>
+                <td>$ @item.MbaAm.ToString("N2")</td>
+            </tr> } </tbody>
+    </table>
+    </p> <br />
+    <p> NOTE: The detailed amounts shown above for each state are based ONLY on your wages earned in that state. You may
+        be eligible for a higher weekly amount if you combine all of your wages from all states. For more information on
+        your combined wage filing options, you can call the State and Federal Claims Unit at @Model.HelptextPhone.<br /> </p>
+    <p>Choose one (1) of the following options: either respond online by logging into @Model.ApplicationName application or fax this
+        letter within ten (10) calendar days to the fax number provided below. If this letter is not returned, your
+        claim will be processed as a Combined Wage Claim utilizing wages from all other states to establish a @Model.StateName
+        Claim. </p>
+    <p>___ I choose to withdraw my @Model.StateName Unemployment Insurance claim and apply for benefits in another state.</p>
+    <p>___ I choose to use my Out-of-State wages with my @Model.StateName Unemployment Insurance Claim and file a Combined Wage
+        Claim.</p>
+    <p>___ I choose to keep my @Model.StateName claim using only my @Model.StateName wages. I do not want to combine my Out-of-State
+        wages.</p> <br />
+    <div style="display: flex; justify-content: space-between;">
+        <p>Date:_________________________________</p>
+        <p>Signature:____________________________</p>
+    </div>
+</body>

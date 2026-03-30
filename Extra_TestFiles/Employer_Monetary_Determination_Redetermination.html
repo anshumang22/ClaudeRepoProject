@@ -1,0 +1,33 @@
+<body style="margin: 20px auto; padding: 20px; font-size:12pt; font-family:Arial">
+    <p>Claimant: @Model.ClaimantName</p>
+    <p>SSN: @Model.SSN.Substring(Model.SSN.Length - 4)</p> @if (Model.IsMonDet == "Y") { <h1
+        style="text-align:center; font-family:Arial; font-size:12pt; font-weight:bold; margin-top:1em">Notice of
+        Unemployment Insurance Claim and Possible Charges​</h1> } else { <h1
+        style="text-align:center; font-family:Arial; font-size:12pt; font-weight:bold; margin-top:1em">Updated Notice of
+        Wages Reported and Possible Charges</h1> } <br /> @if (Model.MonetarySeq >= 1) { <p>@Model.ClaimantName has
+        applied for unemployment benefits. Our records show that you were the claimant&apos;s 10-week employer during
+        the base period. This notice informs you of your potential liability and gives you a chance to correct base
+        period wages if you believe they have been incorrectly reported.</p> } <h2
+        style="text-align:center; font-family:Arial; font-size:12pt; font-weight:bold; margin-top:1em">Effect on Your
+        Unemployment Insurance Account</h2>
+    @if (Model.IsProRataEmp == "Y")
+                {
+                    <p>
+     You paid @Model.PercentOfWages percent of the total wages during the time period shown. You will be charged @Model.PercentOfBenefits percent of the total benefits paid to this claimant. If the claimant is paid the maximum amount available, your total charge will be @Model.MaxBenefitChargeAmount.
+     </p>
+                }
+                else if (Model.IsReimbursingEmp == "Y")
+                {
+                    <p>
+                        Your maximum charge amount is @Model.MaxPotentialChargeAmt<br/>
+                        Based on the total wages reported during the time period shown, you may be required to pay up to @Model.MaxPotentialChargeAmount.
+                    </p>
+                }
+                else if (Model.IsRatedEmp == "Y")
+                {
+                    <p>
+                        Your maximum charge amount is @Model.MaxPotentialChargeAmt<br/>
+                        Based on the total wages reported during the time period shown, you may be charged up to @Model.MaxPotentialChargeAmount. Any charges to your account will be used to calculate your contribution rate. As a result, your rate may increase.
+                    </p>
+                }
+</body>
